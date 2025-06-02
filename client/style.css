@@ -1,0 +1,1081 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  min-height: 100vh;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+button {
+  touch-action: manipulation;
+}
+/* ---------------- Základní bloky ---------------- */
+
+.centered-box {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  margin-top: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+a {
+  color: #ff9800;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-buttons button {
+  margin: 0.5rem 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------------- Horní panel ---------------- */
+
+#topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #1e1e1e;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  border-bottom: 1px solid #333;
+  font-size: 0.95rem;
+  height: 10vh;
+}
+.topBar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* mezera mezi tlačítky */
+}
+
+#userGreeting {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #e0e0e0;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+#settingsButton {
+  font-size: 1.5rem;
+  padding: 0.6rem 0.8rem;
+  background-color: #333;
+  border: 1px solid #666;
+  border-radius: 8px;
+  color: white;
+  transition: background 0.3s ease;
+}
+
+#settingsButton:hover {
+  background-color: #555;
+}
+#calendarButton {
+  font-size: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  background-color: #333;
+  border: 1px solid #666;
+  color: white;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+#calendarButton:hover {
+  background-color: #555;
+}
+
+#stationsButton {
+  font-size: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  background-color: #333;
+  border: 1px solid #666;
+  color: white;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+#stationsButton:hover {
+  background-color: #555;
+}
+
+
+
+
+
+
+/* ---------------- Nastavení účtu ---------------- */
+
+#accountSettingsBar {
+  position: fixed;           /* <-- přidáno */
+  top: 15vh;                 /* <-- funguje až po nastavení pozice */
+  background: #2a2a2a;
+  padding: 1rem;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid #444;
+  z-index: 10;               /* doporučeno, aby překryl ostatní prvky */
+  left: 50%;                 /* zarovnání na střed */
+  transform: translateX(-50%);
+}
+
+.logout-button {
+  background-color: #b91c1c; /* tmavě červená */
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #dc2626; /* světlejší červená při hoveru */
+}
+
+.save-button {
+  background-color: #2e7d32;  /* tmavě zelená */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #388e3c;  /* světlejší zelená při hoveru */
+}
+
+
+
+/* ---------------- Zprávy ---------------- */
+
+.message {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: none;
+}
+
+.message.success {
+  background-color: #2e7d32;
+  color: #c8e6c9;
+}
+
+.message.error {
+  background-color: #c62828;
+  color: #ffcdd2;
+}
+
+/* ---------------- Logo animace ---------------- */
+
+.logo-wrapper {
+  position: relative;
+  width: 120px;
+  margin: 0 auto 1rem;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+}
+
+.logo-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #ff0000;
+  animation:
+    logoPulse 6s infinite ease-in-out,
+    logoFlashColor 6s infinite steps(1, start);
+  transform-origin: center;
+
+  -webkit-mask-image: url("/assets/logo.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+
+  mask-image: url("/assets/logo.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+@keyframes logoPulse {
+  0%, 100%     { transform: scale(1); }
+  16.66%       { transform: scale(1.2); }
+  33.33%       { transform: scale(1); }
+  49.99%       { transform: scale(1.2); }
+  66.66%       { transform: scale(1); }
+  83.33%       { transform: scale(1.2); }
+}
+
+@keyframes logoFlashColor {
+  0%   { background-color: #ff0000; }
+  33.33%  { background-color: #ffff00; }
+  66.66%  { background-color: #00ff00; }
+  100% { background-color: #ff0000; }
+}
+
+
+/* Přes celou šířku nahoře */
+.route-fullbar {
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  background: #2e2e2e;
+  display: flex;
+  align-items: center;     /* vertikálně vystředí obsah */
+  justify-content: center; /* horizontálně vystředí */
+  z-index: 900;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    height: 10vh;
+}
+
+.route-green {
+  background-color: #2e7d32 !important; /* zelená */
+}
+
+.route-yellow {
+  background-color: #fbc02d !important; /* žlutá */
+}
+
+.route-red {
+  background-color: #c62828 !important; /* červená */
+}
+
+
+.route-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;         /* ✅ přidáno pro jistotu */
+  gap: 4rem;
+  font-size: 2.5rem;
+  color: white;
+}
+
+
+.route-selector button {
+  font-size: 2.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transform: translateY(-0.25rem);
+  display: flex;               /* ✅ */
+  align-items: center;         /* ✅ vertikálně vystředí šipku */
+  justify-content: center;     /* ✅ horizontálně vystředí šipku */
+  height: 100%;                /* ✅ zabere celou výšku .route-selector */
+}
+
+.route-selector button:active {
+  transform: scale(1.3);
+}
+
+
+/* === Kontejner pro seznam stanic === */
+.station-list {
+  position: fixed;
+  top: 25vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.station-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.station-list::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+.station-list::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+/* === Jednotlivá stanice === */
+
+.station-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 12px; /* mezera mezi stanicemi */
+  gap: 0; /* odstraní mezeru mezi station-item a station-detail */
+}
+
+.station-item {
+  background: #333;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 1rem;
+  font-weight: bold;
+  transition: border-radius 0.2s ease;
+  z-index: 10;
+}
+
+/* Když je rozbalené, odstraníme spodní zaoblení */
+.station-item.expanded {
+  border-radius: 12px 12px 0 0;
+}
+
+/* Společné vlastnosti pro všechny typy */
+.station-item.recent-check,
+.station-item.medium-check,
+.station-item.old-check {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.station-item.recent-check::before,
+.station-item.medium-check::before,
+.station-item.old-check::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ZELENÁ pro < 1 měsíc */
+.station-item.recent-check::before {
+  background: linear-gradient(to right, #2e7d32, transparent);
+  opacity: 0.35;
+}
+
+/* ORANŽOVÁ pro 1–2 měsíce */
+.station-item.medium-check::before {
+  background: linear-gradient(to right, #f57c00, transparent);
+  opacity: 0.35;
+}
+
+/* ČERVENÁ pro > 2 měsíce */
+.station-item.old-check::before {
+  background: linear-gradient(to right, #c62828, transparent);
+  opacity: 0.4;
+}
+
+/* Obsah stanice musí být nad přechodem */
+.station-item > *,
+.station-item .station-left,
+.station-item .station-right {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+
+.station-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.station-name {
+  font-size: 1.15rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.station-days-since {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-top: 2px;
+}
+
+.station-center {
+  flex: 0;
+  text-align: center;
+}
+
+.station-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.station-right img.station-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+/* === Nádrž elektrolytu === */
+.water-container {
+  width: 40px;
+  height: 60px;
+  border: 2px solid #80d8ff;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: #1a1a1a;
+}
+
+.water-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #2196f3;
+  transition: height 0.5s ease;
+}
+
+.water-fill.high {
+  background: #2196f3; /* modrá */
+}
+
+.water-fill.medium {
+  background: #f57c00; /* oranžová */
+}
+
+.water-fill.low {
+  background: #c62828; /* červená */
+}
+
+
+.water-percent-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+/* === Detailní zobrazení stanice === */
+.station-detail {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #444;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  background-color: #2b2b2b;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* === Editační pole === */
+.edit-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.edit-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+
+
+.edit-row span {
+  width: 160px;
+  text-align: left;
+  padding-right: 10px;
+}
+
+.edit-row input[type="checkbox"] + span {
+  text-align: left;
+}
+
+
+
+.edit-row input:not([type="checkbox"]),
+.edit-row select {
+  flex: 1;
+  max-width: 200px;
+  padding: 6px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #888;
+}
+
+
+.edit-box button {
+  padding: 6px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #3a3a3a;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 4px;
+}
+
+.edit-box button:hover {
+  background-color: #505050;
+}
+
+.akutype-select {
+  background-color: #2c2c2c;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 1rem;
+}
+
+.electrolyte-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.electrolyte-info div {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 8px;
+  border-radius: 4px;
+  line-height: 1.3;
+  transition: background 0.3s ease;
+}
+
+.electrolyte-info div:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+
+
+
+/* === Responsivita === */
+@media (max-width: 600px) {
+  .station-item {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .station-left {
+    font-size: 0.9rem;
+  }
+
+  .station-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .water-container {
+    width: 40px;
+    height: 50px;
+  }
+
+  .water-percent-center {
+    font-size: 0.75rem;
+  }
+}
+
+.sort-container {
+  position: fixed;
+  top: 20vh; 
+  left: 0;
+  right: 0;
+  z-index: 850;
+  background: #1e1e1e;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #333;
+}
+
+.sort-select {
+  margin-left: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2c2c2c;
+  color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sort-select:hover {
+  background-color: #3a3a3a;
+}
+
+.sort-container label {
+  color: #ccc;
+  font-weight: bold;
+}
+
+.styled-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 50px;               /* širší – přidáno místo 44px */
+  height: 26px;
+  background: #444;
+  border-radius: 26px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s ease;
+  align-self: center;
+}
+
+.styled-checkbox::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease;
+}
+
+.styled-checkbox:checked {
+  background-color: #4caf50;
+}
+
+.styled-checkbox:checked::before {
+  transform: translateX(24px); /* nově posun až na druhou stranu */
+}
+
+
+
+
+
+
+#calendarContainer {
+  margin-top: 12vh;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Popis týdne */
+.calendar-week-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+/* Řádek se šipkami */
+.calendar-nav-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tlačítka šipek */
+.calendar-nav-button {
+  background-color: #444;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.calendar-nav-button:hover {
+  background-color: #666;
+}
+
+/* Jednotlivý den */
+.calendar-day {
+  width: 100%;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Datum uvnitř dne */
+.calendar-date {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+.calendar-add-button {
+  background-color: #555;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.calendar-add-button:hover {
+  background-color: #777;
+}
+
+.calendar-form {
+  margin-top: 0.5rem;
+  background-color: #333;
+  padding: 0.8rem;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calendar-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  resize: vertical;
+}
+
+.calendar-form-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendar-save-button,
+.calendar-cancel-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar-save-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.calendar-cancel-button {
+  background-color: #777;
+  color: white;
+}
+
+.calendar-entry {
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-remove-button {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.calendar-remove-button:hover {
+  color: #f66;
+}
+
+.type-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.type-label {
+  font-weight: bold;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slider {
+  background-color: #4caf50;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* === Pracovní možnosti === */
+.work-options {
+  background-color: #2a2a2a;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.work-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ddd;
+}
+
+.work-options input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888;
+  border-radius: 50%;
+  background: #222;
+  cursor: pointer;
+  position: relative;
+}
+
+.work-options input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #4caf50;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.work-options select,
+.work-options textarea {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 100%;
+  resize: vertical;
+}
+
+.work-options textarea {
+  min-height: 60px;
+}
+
+.danger-button {
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: 2px solid #ff4444;
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin: 6px auto 0 auto; /* horní mezera + automatické zarovnání */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  max-width: 50%;
+  display: block; /* nutné pro margin auto fungování */
+  text-align: center;
+}
+
+.danger-button:hover {
+  background-color: #ff4444;
+  color: black;
+}
+
+/* Responzivita */
+@media (max-width: 600px) {
+  #calendarContainer {
+    padding: 1rem;
+  }
+
+  .calendar-day {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  .calendar-date {
+    font-size: 0.9rem;
+  }
+
+  .calendar-entry {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+  }
+}
+
+
+
+
+.approval-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #222;
+  border-radius: 8px;
+  border: 1px solid #444;
+  color: #fff;
+}
+.approval-box h3 {
+  margin-top: 0;
+}
+.approval-box button {
+  margin-left: 1rem;
+  background-color: #2e7d32;
+}

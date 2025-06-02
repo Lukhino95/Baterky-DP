@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Baterkáři</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Horní panel -->
+<div id="topBar" class="hidden">
+  <div id="userGreeting"></div>
+  <div class="topBar-buttons">
+    <button id="calendarButton" onclick="openCalendar()">
+      <i class="fas fa-calendar-alt"></i>
+    </button>
+    <button id="stationsButton" onclick="toggleStations()">
+      <i class="fas fa-map"></i>
+    </button>
+    <button id="settingsButton" onclick="toggleAccountSettings()">
+      <i class="fas fa-cog"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Nastavení účtu -->
+<!-- Nastavení účtu -->
+<div id="accountSettingsBar" class="hidden">
+
+  <button onclick="toggleNameSection()">Změnit moje údaje</button>
+  <div id="nameSection" class="hidden">
+    <input type="text" id="firstName" placeholder="Jméno">
+    <input type="text" id="lastName" placeholder="Příjmení">
+    <button class="save-button" onclick="saveNameChange()">Uložit změny údajů</button>
+  </div>
+
+  <button onclick="togglePasswordField()">Změnit heslo</button>
+  <div id="passwordSection" class="hidden">
+    <input type="password" id="oldPassword" placeholder="Staré heslo">
+    <input type="password" id="newPassword" placeholder="Nové heslo">
+    <button class="save-button" onclick="savePasswordChange()">Uložit nové heslo</button>
+  </div>
+
+
+<div id="approvalSection" style="display: none;">
+  <button onclick="toggleApprovalPanel()">Zobrazit schvalování</button>
+  <div id="approvalPanel" class="hidden">
+    <ul id="pendingUsersList"></ul>
+  </div>
+</div>
+
+
+  <button class="logout-button" onclick="logout()">Odhlásit</button>
+
+  <div id="settingsMessage" class="message"></div>
+</div>
+
+
+<!-- Přihlašovací formulář -->
+<div id="authContainer" class="centered-box">
+  <div class="logo-wrapper">
+    <div class="color-layer"></div>
+    <img src="/assets/logo.png" class="logo" />
+  </div>
+  <h2>Přihlášení</h2>
+  <input type="text" id="username" placeholder="Uživatelské jméno" />
+  <input type="password" id="password" placeholder="Heslo" />
+  <button onclick="login()">Přihlásit se</button>
+  <p>Nemáte účet? <a href="#" onclick="showRegister()">Registrace</a></p>
+  <div id="loginMessage" class="message"></div>
+</div>
+
+<!-- Registrační formulář -->
+<div id="registerContainer" class="centered-box hidden">
+  <div class="logo-wrapper">
+    <div class="color-layer"></div>
+    <img src="/assets/logo.png" class="logo" />
+  </div>
+  <h2>Registrace</h2>
+  <input type="text" id="regFirstName" placeholder="Jméno" />
+  <input type="text" id="regLastName" placeholder="Příjmení" />
+  <input type="text" id="regUsername" placeholder="Uživatelské jméno" />
+  <input type="password" id="regPassword" placeholder="Heslo" />
+  <button onclick="register()">Registrovat</button>
+  <p>Máte účet? <a href="#" onclick="showLogin()">Přihlásit se</a></p>
+  <div id="registerMessage" class="message"></div>
+</div>
+
+<!-- Výběr trasy -->
+<div id="menuContainer" class="route-fullbar hidden">
+  <div class="route-selector">
+    <button onclick="cycleRoute(-1)">&#x25C0;</button>
+    <div id="routeLetter">A</div>
+    <button onclick="cycleRoute(1)">&#x25B6;</button>
+  </div>
+</div>
+
+<!-- Řazení stanic -->
+<div id="sortContainer" class="sort-container hidden">
+  <label for="sortSelect">Seřadit podle:</label>
+  <select id="sortSelect" onchange="handleSortChange()" class="sort-select">
+    <option value="default">Původní seřazení</option>
+    <option value="level-asc">Hladina elektrolytu od nejnižší</option>
+    <option value="level-desc">Hladina elektrolytu od nejvyšší</option>
+    <option value="name">Abecedně</option>
+    <option value="distiller">Destilační přístroje</option>
+    <option value="monitoring">Monitoringy</option>
+  </select>
+</div>
+
+<!-- Seznam stanic -->
+<div id="stationListContainer" class="station-list hidden"></div>
+
+<!-- Kalendář -->
+<div id="calendarContainer" class="hidden"></div>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
