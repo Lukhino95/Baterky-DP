@@ -384,8 +384,12 @@ const {
 
 
 
+// Fallback: všechny neznámé cesty pošlou index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+});
 
-// Start serveru
 app.listen(PORT, () => {
   console.log(`Server běží na http://localhost:${PORT}`);
 });
+
