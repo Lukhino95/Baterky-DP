@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Nemocnice Motol",
+    "akutype": "none"
+  },
+  {
+    "name": "Petřiny",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Nádraží Veleslavín",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Bořislavka",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Kanadská",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Dejvická",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Hradčanská",
+    "akutype": "none"
+  },
+  {
+    "name": "Malostranská",
+    "akutype": "none"
+  },
+  {
+    "name": "Staroměstská",
+    "akutype": "none"
+  },
+  {
+    "name": "Můstek",
+    "akutype": "none"
+  },
+  {
+    "name": "Muzeum",
+    "akutype": "none"
+  },
+  {
+    "name": "Náměstí Míru",
+    "akutype": "none"
+  },
+  {
+    "name": "Jiřího z Poděbrad",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Flora",
+    "akutype": "none"
+  },
+  {
+    "name": "Želivského",
+    "akutype": "Žádný"
+  },
+  {
+    "name": "Strašnická",
+    "akutype": "none"
+  },
+  {
+    "name": "Skalka",
+    "akutype": "none"
+  },
+  {
+    "name": "Depo Hostivař",
+    "akutype": "none"
+  },
+  {
+    "name": "OZM",
+    "akutype": "none"
+  }
+]
